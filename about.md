@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+Software engineer at [idealista.com](idealista.com)!
 
 ### More Information
 
@@ -12,4 +12,5 @@ A place to include any other types of information that you'd like to include abo
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[rodrite.testillano@gmail.con](mailto:rodrite.testillano@gmail.con)
+[LinkedIn](https://www.linkedin.com/in/rodrite)

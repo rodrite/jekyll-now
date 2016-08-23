@@ -39,7 +39,7 @@ DaemonStream(TupleStream tupleStream, String id, long runInterval, int queueSize
 
 ## Collections ##
 
-For this example i've used one collection ( the data for this collections are : [mock collection] ({{ site.url }}/resources/mock_data.json)), generated with [mockaroo](https://www.mockaroo.com/).
+For this example i've used one collection ( the data for this collections are : [mock collection]({{ site.url }}/resources/mock_data.json)), generated with [mockaroo](https://www.mockaroo.com/).
 The scheme of this collection is:
 
 - **id**: document id (number)
@@ -122,7 +122,7 @@ public class StreamTopic
 
 We can see in the code that our query is **q=Red**, this mean that the topicStream function reads all tuples with **type=Red**
 
-For test this We run the script and update the collection with [these documents] ({{ site.url }}/resources/mock_input.json)
+For test this We run the script and update the collection with [these documents]({{ site.url }}/resources/mock_input.json)
 
 ```json
 [{"id":1,"price":61133,"area":759905,"type":"Red"},
@@ -133,8 +133,14 @@ For test this We run the script and update the collection with [these documents]
 ```
 
 The script output should be this:
+
 ```json
 [{"id":1,"price":61133,"area":759905,"type":"Red"},
 {"id":2,"price":802969,"area":23415,"type":"Red"},
 {"id":4,"price":621932,"area":300604,"type":"Red"}]
 ```
+
+## For more information ##
+
+(https://issues.apache.org/jira/browse/SOLR-4587)
+(https://issues.apache.org/jira/browse/SOLR-8709)
