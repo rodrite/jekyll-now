@@ -48,7 +48,7 @@ The scheme of this collection is:
 - **type**: field to query (String). The types are colors
 
 ## Sample code ##
-Here we are the sample code!
+Here we are the sample code! (this code is based in [continuous pull sample code](https://cwiki.apache.org/confluence/display/solr/Streaming+Expressions#StreamingExpressions-daemon) with some changes)
 
 ```java
 package rodrite.github.io.solr.streaming;
