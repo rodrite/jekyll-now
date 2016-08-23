@@ -142,4 +142,6 @@ The script output should be this:
 
 ## For more information ##
 
-()
+(https://issues.apache.org/jira/browse/SOLR-4587)
+
+(https://issues.apache.org/jira/browse/SOLR-8709)
