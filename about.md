@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Software engineer at [idealista.com](idealista.com)!
+Software engineer at [idealista](https://www.idealista.com/)!
 
 ### More Information
 
@@ -12,6 +12,6 @@ A place to include any other types of information that you'd like to include abo
 
 ### Contact me
 
-[rodrite.testillano@gmail.con](mailto:rodrite.testillano@gmail.con)
+[email](mailto:rodrite.testillano@gmail.con)
 
-[LinkedIn](https://www.linkedin.com/in/rodrite)
+[linkedIn](https://www.linkedin.com/in/rodrite)
