@@ -48,7 +48,7 @@ The scheme of this collection is:
 - **type**: field to query (String). The types are colors
 
 ## Sample code ##
-Here we are the sample code! (this code is based in [continuous pull sample code](https://cwiki.apache.org/confluence/display/solr/Streaming+Expressions#StreamingExpressions-daemon) with some changes)
+Here we are the sample code! (this code is based in [continous pull sample code](https://cwiki.apache.org/confluence/display/solr/Streaming+Expressions#StreamingExpressions-daemon) with some changes)
 
 ```java
 package rodrite.github.io.solr.streaming;
@@ -88,7 +88,7 @@ public class StreamTopic
                              solrPararms);    // The query parameters for the TopicStream
 
 		DaemonStream daemonStream = new DaemonStream(topicStream, // The underlying stream to run.
-                             "prueba",    // The id of the daemon
+                             "test",    // The id of the daemon
                               1000,        // The interval at which to run the internal stream
                               500);        // The internal queue size for the daemon stream. Tuples will be placed in the daemonStream.setStreamContext(context);
 		daemonStream.open();
