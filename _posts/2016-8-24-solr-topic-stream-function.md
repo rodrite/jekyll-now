@@ -80,27 +80,21 @@ public class StreamTopic
 
 		SolrParams solrPararms =  new MultiMapSolrParams(topicQueryParams);
 
-		TopicStream topicStream = new TopicStream(zookeeperHost,         // Host address for the zookeeper service housing the collections
-		                                         "checkpoints",   // The collection to store the topic checkpoints
-		                                         "gettingstarted",// The collection to query for the topic records
-		                                         "topicId",       // The id of the topic
-		                                         -1,              // checkpoint every X tuples, if set -1 it will checkpoint after each run.
-		                                         solrPararms);    // The query parameters for the TopicStream
+		TopicStream topicStream = new TopicStream(zookeeperHost,  // Host address for the zookeeper
+                             "checkpoints",   // The collection to store the topic checkpoints
+                             "gettingstarted",// The collection to query for the topic records
+                             "topicId",       // The id of the topic
+                             -1,              // checkpoint every X tuples, if set -1 it will checkpoin after each run.
+                             solrPararms);    // The query parameters for the TopicStream
 
 		DaemonStream daemonStream = new DaemonStream(topicStream, // The underlying stream to run.
-		                                             "prueba",    // The id of the daemon
-		                                             1000,        // The interval at which to run the internal stream
-		                                             500);        // The internal queue size for the daemon stream. Tuples will be placed in the queue
-		                                                          // as they are read by the internal internal thread.
-		                                                          // Calling read() on the daemon stream reads records from the internal queue.
-
-		daemonStream.setStreamContext(context);
+                             "prueba",    // The id of the daemon
+                              1000,        // The interval at which to run the internal stream
+                              500);        // The internal queue size for the daemon stream. Tuples will be placed in the daemonStream.setStreamContext(context);
 		daemonStream.open();
-
 		workWithTuples(daemonStream); //here we work with the Tuples
-
 		daemonStream.close();
-    }
+  }
 
 	private static void workWithTuples(DaemonStream daemonStream) {
 		while(true) {
@@ -122,7 +116,7 @@ public class StreamTopic
 
 We can see in the code that our query is **q=Red**, this mean that the topicStream function reads all tuples with **type=Red**
 
-For test this We run the script and update the collection with [these documents]({{ site.url }}/resources/mock_input.json)
+For test this run the script and update the collection with [these documents]({{ site.url }}/resources/mock_input.json)
 
 ```json
 [{"id":1,"price":61133,"area":759905,"type":"Red"},
@@ -142,6 +136,6 @@ The script output should be this:
 
 ## For more information ##
 
-(https://issues.apache.org/jira/browse/SOLR-4587)
+[Implement Saved Searches a la ElasticSearch Percolator](https://issues.apache.org/jira/browse/SOLR-4587)
 
-(https://issues.apache.org/jira/browse/SOLR-8709)
+[Add checksum to the TopicStream to ensure delivery of all documents within a Topic](https://issues.apache.org/jira/browse/SOLR-8709)
