@@ -4,51 +4,51 @@ title: "Solr Streaming Expression Example: TopicStream function"
 ---
 
 ## Getting started ##
-This example assumes that you're already familiar with the basics of using Solr and you have one Solr node in cloud mode.
+In order to understand this example, you need to be already familiar with the basics of using Solr and you have one Solr node in cloud mode.
 More information about getting started with solr cloud here: [Getting Started with SolrCloud](https://cwiki.apache.org/confluence/display/solr/Getting+Started+with+SolrCloud)
 
 
 ## TopicStream function ##
-In [Solr Streaming Expression](https://cwiki.apache.org/confluence/display/solr/Streaming+Expressions#StreamingExpressions-topic) topic function is defined like a function that *provides publish/subscribe messaging capabilities built on top of SolrCloud. **The topic function allows users to subscribe to a query**. The function then provides one-time delivery of new or updated documents that match the topic query. The initial call to the topic function establishes the checkpoints for the specific topic ID. Subsequent calls to the same topic ID will return new or updated documents that match the topic query*
+In [Solr Streaming Expression](https://cwiki.apache.org/confluence/display/solr/Streaming+Expressions#StreamingExpressions-topic) topic function is defined as a function that *provides publish/subscribe messaging capabilities built on top of SolrCloud. **The topic function allows users to subscribe to a query**. The function then provides one-time delivery of new or updated documents that match the topic query. The initial call to the topic function establishes the checkpoints for the specific topic ID. Subsequent calls to the same topic ID will return new or updated documents that match the topic query.*
 
-In this post we are going to work with [Java Streaming Api](http://lucene.apache.org/solr/6_1_0/solr-solrj/org/apache/solr/client/solrj/io/stream/package-summary.html)
+In this post we are going to work with [Java Streaming Api](http://lucene.apache.org/solr/6_1_0/solr-solrj/org/apache/solr/client/solrj/io/stream/package-summary.html).
 One description of the [TopicStream function](http://lucene.apache.org/solr/6_1_0/solr-solrj/org/apache/solr/client/solrj/io/stream/TopicStream.html) is :
 
 ```java
 TopicStream(String zkHost, String checkpointCollection, String collection, String id,
 long checkpointEvery, SolrParams params);
 ```
-- **zkHost**: zookeeper host
-- **checkpointColletion**: The collection where the topic checkpoints are stored
-- **collection**: The collection where data are stored and topic query will be run on
-- **id**: Id for the topic. This id is unique
+- **zkHost**: zookeeper host.
+- **checkpointColletion**: the collection where the topic checkpoints are stored.
+- **collection**: the collection where data are stored and topic query will be run on.
+- **id**: id for the topic. This id is unique.
 - **checkpointEvery**: checkpoint every X tuples, if set -1 it will checkpoint after each run.
-- **params**: Qury parameters for the TopicStream
+- **params**: query parameters for the TopicStream.
 
 ## Daemon function ##
 
-The [daemon function](https://cwiki.apache.org/confluence/display/solr/Streaming+Expressions#StreamingExpressions-daemon) belongs to [Stream Decorators](https://cwiki.apache.org/confluence/display/solr/Streaming+Expressions#StreamingExpressions-StreamDecorators). *Stream decorators wrap other stream functions or perform operations on the stream.*  This function wraps another function and runs it at intervals. we use this function to provide both continuous pull streaming.
+The [daemon function](https://cwiki.apache.org/confluence/display/solr/Streaming+Expressions#StreamingExpressions-daemon) belongs to the [Stream Decorators](https://cwiki.apache.org/confluence/display/solr/Streaming+Expressions#StreamingExpressions-StreamDecorators). *Stream decorators wrap other stream functions or perform operations on the stream.*  This function wraps another function and runs it at intervals. We use this function to provide both with continuous pull streaming.
 
 ```java
 DaemonStream(TupleStream tupleStream, String id, long runInterval, int queueSize);
 ```
-- **tupleStream**: Stream to run, in this case our TopicStream function
-- **id**: The id of the daemon
-- **runInterval**: The interval at which to run the internal stream
-- **queueSize**:The internal queue size for the daemon stream.
+- **tupleStream**: stream to run, in this case our TopicStream function
+- **id**: the id of the daemon
+- **runInterval**: the interval at which to run the internal stream
+- **queueSize**:the internal queue size for the daemon stream.
 
 ## Collections ##
 
-For this example i've used one collection ( the data for this collections are : [mock collection]({{ site.url }}/resources/mock_data.json)), generated with [mockaroo](https://www.mockaroo.com/).
+For this example I've used one collection ( the data for these collections are : [mock collection]({{ site.url }}/resources/mock_data.json)), generated with [mockaroo](https://www.mockaroo.com/).
 The scheme of this collection is:
 
-- **id**: document id (number)
-- **price**: not used in this example (number)
-- **area**: not used in this example (number)
-- **type**: field to query (String). The types are colors
+- **id**: document id (number).
+- **price**: not used in this example (number).
+- **area**: not used in this example (number).
+- **type**: field to query (String). The types are colors.
 
 ## Sample code ##
-Here we are the sample code! (this code is based in [continous pull sample code](https://cwiki.apache.org/confluence/display/solr/Streaming+Expressions#StreamingExpressions-daemon) with some changes)
+Here we have the simple code! (This code is based on the [continous pull sample code](https://cwiki.apache.org/confluence/display/solr/Streaming+Expressions#StreamingExpressions-daemon) with some changes).
 
 ```java
 package rodrite.github.io.solr.streaming;
@@ -75,7 +75,7 @@ public class StreamTopic
 
 		Map<String, String[]> topicQueryParams = new HashMap<String, String[]>();
 		topicQueryParams.put("q",new String[]{"Red"});    // The query for the topic
-		topicQueryParams.put("rows", new String[]{"500"});// How many rows to fetch during each run
+		topicQueryParams.put("rows", new String[]{"500"});// number of rows to fetch during each run
 		topicQueryParams.put("fl", new String[]{"*"});    // The field list to return with the documents
 
 		SolrParams solrPararms =  new MultiMapSolrParams(topicQueryParams);
@@ -114,9 +114,9 @@ public class StreamTopic
 }
 ```
 
-We can see in the code that our query is **q=Red**, this mean that the topicStream function reads all tuples with **type=Red**
+The above code shows that our query our query is **q=Red**, this mean that the topicStream function reads all tuples with **type=Red**
 
-For test this run the script and update the collection with [these documents]({{ site.url }}/resources/mock_input.json)
+In order to test this run the script and update the collection with [these documents]({{ site.url }}/resources/mock_input.json).
 
 ```json
 [{"id":1,"price":61133,"area":759905,"type":"Red"},
