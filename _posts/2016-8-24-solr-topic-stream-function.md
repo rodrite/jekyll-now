@@ -114,7 +114,7 @@ public class StreamTopic
 }
 ```
 
-The above code shows that our query our query is **q=Red**, this mean that the topicStream function reads all tuples with **type=Red**
+The above code shows that our query our query is **q=Red**, this mean that the topicStream function reads all tuples with **type=Red**.
 
 In order to test this run the script and update the collection with [these documents]({{ site.url }}/resources/mock_input.json).
 
