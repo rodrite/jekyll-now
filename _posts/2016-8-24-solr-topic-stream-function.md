@@ -3,7 +3,7 @@ layout: post
 title: "Solr Streaming Expression Example: TopicStream function"
 ---
 
-![solr](../images/Solr.png){:class="img-responsive"}
+![solr](../images/Solr.png){:class="img-responsive" .center-image}
 
 ## Getting started ##
 In order to understand this example, you need to be already familiar with the basics of using Solr and you have one Solr node in cloud mode.
