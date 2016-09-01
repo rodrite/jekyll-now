@@ -130,6 +130,12 @@ img {
   background: $lightGray;
 }
 
+.center-image
+{
+    margin: 0 auto;
+    display: block;
+}
+
 // Nicolas Gallagher's micro clearfix hack
 // http://nicolasgallagher.com/micro-clearfix-hack/
 .clearfix:before,
